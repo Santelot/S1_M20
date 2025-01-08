@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        table { width: 100%; border-collapse: collapse; }
+        td { padding: 8px; border: 1px solid #ddd; vertical-align: top; }
+    </style>
+    <script>
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                 document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                 document.getElementById('activity-1').style.display = 'none';
+                 document.getElementById('activity-5').style.display = 'none';
+            }
+        }
+
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="header">
+    <h1>Playbook - S1 - M20</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+             <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+<!-- Actividad 1 -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('saludo_ritual')">
+        <div class="title">🎉 Actividad 1: Saludo y Ritual Gnius Club ⏰ Tiempo: 2.5 minutos</div>
+        <div class="subtitle">Bienvenida a la clase y preparación para el reto.</div>
+    </div>
+    <div id="saludo_ritual" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 2 "Bienvenida".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hola, Genios. Hoy aplicaremos lo que aprendimos sobre mallas para crear un objeto práctico: ¡un cofre impermeable diseñado para proteger objetos especiales! Este reto combina diseño y funcionalidad, así que prepárense para un desafío emocionante."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 3 "¿Cómo están?".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Antes de empezar, quiero ver cómo se sienten hoy. Si están listos para diseñar, froten sus manos rápidamente. Si necesitan un momento para enfocarse, coloquen una mano sobre su cabeza y la otra sobre su corazón."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 4 "Gracias por Asistir".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Juntemos nuestras manos en agradecimiento por esta oportunidad de aprender y crear juntos. ¡Gracias por asistir, Genios!"</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 4 (0.5 minutos):</strong> Proyectar Diapositiva 5 "Objetivos de la Misión".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy tenemos dos objetivos: 1. Diseñar un cofre de dos piezas que sea impermeable por separado. 2. Asegurar que el espacio interior del cofre se mantenga seco cuando las dos piezas se unan."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 2 -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('state_change')">
+        <div class="title">🖐️ Actividad 2: State Change ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Actividad para mejorar la coordinación y concentración.</div>
+    </div>
+    <div id="state_change" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 6 "Manos Mágicas".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Vamos a preparar nuestras manos para la acción. Froten sus manos rápidamente hasta que sientan calor, luego coloquen las palmas sobre sus ojos cerrados. Esto les ayudará a relajar la vista y a enfocarse mejor en la actividad que sigue."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 7 "Cronómetro - 1 Minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 8 "Reflexión sobre Manos Mágicas".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Muy bien! Este pequeño ejercicio ayuda a relajar la vista y a enfocar nuestra mente. Ahora, estamos listos para diseñar con precisión."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 3 -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('team_gnius')">
+        <div class="title">🤝 Actividad 3: Team Gnius ⏰ Tiempo: 6 minutos</div>
+        <div class="subtitle">Organización en equipos y planificación del reto con Kanban.</div>
+    </div>
+    <div id="team_gnius" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 9 "Formación de Equipos".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, formen equipos de dos personas para este reto. Tómense un minuto para elegir a su compañero o compañera y sentarse juntos."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 10 "Cronómetro - 1 Minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 11 "Recoger Magic Tablets".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora que tienen sus equipos, envíen a un representante a recoger su Magic Tablet. La usarán para trabajar en el diseño de su cofre."</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 4 (1 minuto):</strong> Proyectar Diapositiva 12 "Cronómetro - 1 Minuto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 5 (1.5 minutos):</strong> Proyectar Diapositiva 13 "Uso de Kanban Digital".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy usaremos nuevamente el método Kanban para planificar nuestro trabajo. Ingresen a https://scrumboard.org/ y creen un tablero para su proyecto. Recuerden que esta herramienta nos ayuda a organizar las tareas de manera visual y eficiente. Kanban es como un mapa de ruta, que nos permite ver todos los pasos que tenemos que seguir para llegar a la meta."</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 6 (1.5 minutos):</strong> Proyectar Diapositiva 14 "Planificación del Proyecto".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "En su tablero Kanban, creen las columnas 'Pendientes', 'En Progreso' y 'Hecho'. Luego, añadan las tareas necesarias para diseñar el cofre, como crear la base, la tapa, asegurar que cada pieza sea impermeable por separado y que el cofre cierre perfectamente.  Usen las tarjetas para distribuir las tareas de manera equitativa entre los miembros del equipo. Una buena planificación es esencial para el éxito, como si fueran diseñadores que planean un prototipo antes de construirlo."</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 4 -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">🏆 Actividad 4: Challenge ⏰ Tiempo: 37.5 minutos</div>
+        <div class="subtitle">Diseño de un cofre impermeable de dos piezas en TinkerCAD.</div>
+    </div>
+    <div id="challenge" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 15 "Challenge".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, llegó el momento de poner en práctica lo que aprendieron sobre mallas y diseño funcional. En este Challenge, diseñarán un cofre para guardar objetos pequeños, que deberá ser impermeable y formado por dos piezas."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (2 minutes):</strong> Proyectar Diapositiva 16 "Diseño del Cofre".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Su reto consiste en diseñar un cofre de dos piezas que debe ser impermeable tanto por separado como cuando se unen. Esto significa que deben diseñar cada pieza como un recipiente cerrado (malla 'Manifold'), asegurándose de que no haya huecos o superficies que permitan la entrada de agua.  Los niveles de dificultad son:
+                 <ul>
+                    <li><strong>Rookie:</strong> Diseñar un cofre de dos piezas, asegurando que cada pieza forme un recipiente cerrado que pueda contener un objeto pequeño sin dejar que entre agua.</li>
+                    <li><strong>Master:</strong> (+) Asegurar que cada pieza sea impermeable, y que cuando se unan, formen un cofre totalmente impermeable que contenga objetos.</li>
+                    <li><strong>Hacker:</strong> (+)  Diseñar un cofre totalmente impermeable, con un sistema de cierre seguro y que cumpla con los requerimientos de los niveles previos.</li>
+                 </ul>
+                 Empiecen por el diseño de las piezas principales y luego piensen en cómo unirlas de forma que no haya fugas. Imaginen que están creando un prototipo para un contenedor hermético, donde la funcionalidad y la precisión son muy importantes. Recuerden que cada detalle cuenta y usen todas las técnicas que hemos aprendido."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (25 minutos):</strong> Proyectar Diapositiva 17 "Cronómetro - 25 Minutos".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (5 minutos):</strong> Proyectar Diapositiva 18 "Presentación de Cofres".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Tiempo! Ahora cada equipo tendrá dos minutos para mostrar sus cofres a sus compañeros. Expliquen cómo diseñaron las piezas para que sean impermeables, cómo lograron que encajaran perfectamente y qué retos encontraron durante el proceso. Compartir sus experiencias les ayudará a aprender de diferentes soluciones y a mejorar sus habilidades."</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 5 (5 minutos):</strong> Proyectar Diapositiva 19 "Cronómetro - 5 Minutos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "N/A"</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 6 (0.5 minutos):</strong> Proyectar Diapositiva 20 "Objetivos Alcanzados".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hemos completado todos los objetivos de la misión.  Han diseñado un cofre de dos piezas que es impermeable por separado y que mantiene el espacio interior seco cuando se unen las piezas. ¡Excelente trabajo, Genios!"</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 7 (0.5 minutos):</strong> Proyectar Diapositiva 21 "You've Got Mon-e".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Felicidades, Genios! Han demostrado su habilidad para aplicar técnicas de diseño y para crear modelos funcionales. Todos se llevan Mon-e por su esfuerzo. ¡Nos vemos en la próxima misión!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 5 -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('honor_dojo')">
+        <div class="title">🎖️ Actividad 5: Honor de Dojo ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Cierre de la clase y orden del espacio de trabajo.</div>
+    </div>
+    <div id="honor_dojo" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (2 minutos):</strong> Proyectar Diapositiva 22 "Honor the Dojo".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, hemos llegado al final de nuestra misión de hoy.  Por favor, cada equipo pase al frente para devolver su Magic Tablet y asegúrense de dejar sus áreas de trabajo limpias y organizadas. Su colaboración y respeto por el espacio son muy importantes. ¡Gracias por su esfuerzo y dedicación!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+</div>
+
+</body>
+</html>
